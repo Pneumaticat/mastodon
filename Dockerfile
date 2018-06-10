@@ -87,5 +87,7 @@ VOLUME /mastodon/public/system /mastodon/public/assets /mastodon/public/packs
 
 USER mastodon
 
+RUN OTP_SECRET=$(bundle exec rails secret) SECRET_KEY_BASE=$(bundle exec rails secret) bundle exec rails assets:precompile
+
 ENV LD_PRELOAD=/lib/stack-fix.so
 ENTRYPOINT ["/sbin/tini", "--"]
